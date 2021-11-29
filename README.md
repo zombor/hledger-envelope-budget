@@ -113,7 +113,7 @@ The `assets:cash:ally:pending` account is meant to hold money to pay credit card
 
 Another `balance assertion` to make sure we're paying the full amount of the card.
 
-### Rule 2: Give Every Dollar A Job
+### Rule 2: Embrace Your True Expenses
 
 This is heavily related to `Rule 1`. The gist is that you want to find large expenses like car insurance, christmas gifts, capex for real estate, etc and put small amounts of money to them every month. So if you know that you have a $600 car insurance payment every 6 months, make sure you put $100 into that budget category every month.
 
