@@ -220,6 +220,6 @@ I budget money for after-tax investments, so it's basically a normal transaction
 
 ```
 2021-11-29 Amex Payment
-   liabilities:amex                                $1,234.56
-   assets:cash:ally:budget:checking:pending:amex  $-1,234.56
+   liabilities:amex                                $1,234.56 = 0
+   assets:cash:ally:budget:checking:pending:amex  $-1,234.56 = 0
 ```
