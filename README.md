@@ -1,6 +1,6 @@
-# Money
+# hledger envelope budgeting
 
-`hledger` journal files to track finances. Uses double entry accounting with envelope budgeting.
+YNAB style finances with `hledger`. Uses double entry accounting with envelope budgeting.
 
 This document is heavily inspired by the [YNAB 4 Rules](https://www.youneedabudget.com/the-four-rules/). This method has kept my money in a good place for a long time:
 
@@ -36,6 +36,7 @@ Because this is an adaptation of envelope budgeting there are some account prefi
 2. `assets:cash:<account>:checking` and `assets:cash:<account>:savings` - This is checking and savings for a single bank account. I only have one bank, so mine is `assets:cash:ally:checking`. This is where paychecks go when I get paid. More on this next.
 3. `assets:cash:<account>:budget:checking|savings:<category>` - These are envelopes where spendable money goes. This is where _all_ spendable money goes. This means that your actual checking and savings accounts should have a zero balance in your ledger. When you add up the budget categories in your `budget:checking:*` accounts, it should add up to the amount in your physical checking account. This way you can never overspend your balance as long as you follow your envelopes. It is a bit deceiving, but it's good for tracking!
 4. `assets:cash:<account>:budget:checking|savings:unallocated` - This is money that you don't have a job for yet. All money needs a category, even if it's not assigned yet.
+5. `assets:cash:<account>:budget:checking|savings:pending:<credit-card>` - This is money that is set aside to pay a credit card. Whenever you buy something on a credit card, you'll transfer money from your budget envelope to this account. This ensures that you always have enough money to pay your credit card at the end of the month. It's scoped to checking or savings so that you can keep track of where to pay from. It's probably pretty rare to pay a credit card from a savings account, so I'd expect this to only be a checking sub-account. Doing this also lets you reconcile your `assets:cash:<account>:budget:checking` account with your actual checking balance. If you run `hledger bal <account>:budget --cleared`, this number should match your physical bank balance.
 
 ### Liabilities
 
