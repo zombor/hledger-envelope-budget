@@ -1,4 +1,4 @@
-# hledger-envelope-budget
+# Money
 
 `hledger` journal files to track finances. Uses double entry accounting with envelope budgeting.
 
@@ -92,7 +92,7 @@ Now when you check your balances with `hledger bal -BEt budget:utilities` you'll
 2021-11-27 Amazon
    expenses:groceries                    $3.41
    assets:cash:ally:budget:checking:groceries    $-3.41
-   assets:cash:ally:pending:amazon-visa  $3.41
+   assets:cash:ally:budget:checking:pending:amazon-visa  $3.41
    liabilities:amazon-visa
 ```
 
@@ -103,11 +103,11 @@ This is a little more complicated, there's 4 postings! This is explained by:
 3. Add to the appropriate credit card pending account so we have money to pay
 4. Subtract from the credit card because we owe more money
 
-The `assets:cash:ally:pending` account is meant to hold money to pay credit cards. In this way, you can never overspend your credit card and not have enough money to pay it. So let's pay it now:
+The `assets:cash:ally:budget:checking:pending` account is meant to hold money to pay credit cards. In this way, you can never overspend your credit card and not have enough money to pay it. So let's pay it now:
 
 ```
 2021-12-30 Visa Payment
-   assets:cash:ally:pending:amazon-visa  $-3.41
+   assets:cash:ally:budget:checking:pending:amazon-visa  $-3.41
    liabilities:amazon-visa  = 0
 ```
 
@@ -172,9 +172,9 @@ We got paid from amex directly to our amex balance
 
 ```
 2021-11-26 AMEX | Dining Credit
-   liabilities:amex                     $10
-   assets:cash:ally:budget:unallocated  $10
-   assets:cash:ally:pending:amex       $-10
+   liabilities:amex                                     $10
+   assets:cash:ally:budget:unallocated                  $10
+   assets:cash:ally:budget:checking:pending:amex       $-10
    income:amex
 ```
 
@@ -211,4 +211,15 @@ I budget money for after-tax investments, so it's basically a normal transaction
    expenses:fees:coinbase                     $2.99
    expenses:fees:coinbase                     $0.12 ; Rounding
    assets:cash:ally:budget:checking:investing:crypto   $-200.00
+```
+
+### Credit Card Payments
+
+1. Add the payment amount to your liability account (you paid the debt)
+2. Subtract the payment amount from `assets:cash:<account>:budget:checking:pending:<card>` (you're sending money from your checking account to pay the debt)
+
+```
+2021-11-29 Amex Payment
+   liabilities:amex                $1,234.56
+   assets:cash:ally:budget:checking:pending:amex  $-1,234.56
 ```
