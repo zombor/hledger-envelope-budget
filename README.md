@@ -64,7 +64,7 @@ I get paid on the 1st and 15th of the month.
   income:salary
 ```
 
-Note that this violates on of the rules stated above: money never actually sits in a physical checking account, it must be assigned a job. So if you know what job all your money has immediately, send the money to those accounts. Otherwise, put it in the `unassigned` account:
+Note that this violates one of the rules stated above: money never actually sits in a physical checking account, it must be assigned a job. So if you know what job all your money has immediately, send the money to those accounts. Otherwise, put it in the `unassigned` account:
 
 ```
 2021-12-01 Budgeting
